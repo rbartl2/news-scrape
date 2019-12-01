@@ -2,6 +2,7 @@
 var express = require("express");
 var expressHandlebars = require("express-handlebars");
 var mongoose = require("mongoose");
+var logger = require("morgan");
 
 // Require axios and cheerio. This makes the scraping possible
 var axios = require("axios");
@@ -16,6 +17,7 @@ require("./config/routes")(router);
 
 app.use(express.static(__dirname + '/public'));
 
+app.use(logger("dev"));
 // Sets up express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
