@@ -33,10 +33,21 @@ app.use(router);
 // Require all models
 // var db = require("./models");
 
-var PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/mongoHeadlines", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/mongoHeadlines", { useNewUrlParser: true });
+const db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+// Connect Mongoose to database
+mongoose.connect(db, function(error){
+    if(error) {
+        console.log(error);
+    }
+    else {
+        console.log("mongoose connection successful");
+    }
+});
 
 
 
