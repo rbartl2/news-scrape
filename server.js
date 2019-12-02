@@ -2,7 +2,6 @@
 var express = require("express");
 var expressHandlebars = require("express-handlebars");
 var mongoose = require("mongoose");
-// var logger = require("morgan");
 
 // Require axios and cheerio. This makes the scraping possible
 var axios = require("axios");
@@ -17,7 +16,6 @@ require("./config/routes")(router);
 
 app.use(express.static(__dirname + '/public'));
 
-// app.use(logger("dev"));
 // Sets up express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -29,14 +27,8 @@ app.set("view engine", "handlebars");
 
 app.use(router);
 
-
-// Require all models
-// var db = require("./models");
-
 const PORT = process.env.PORT || 3000;
 
-// Connect to the Mongo DB
-// mongoose.connect("mongodb://localhost/mongoHeadlines", { useNewUrlParser: true });
 const db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 // Connect Mongoose to database
