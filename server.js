@@ -2,6 +2,7 @@
 var express = require("express");
 var expressHandlebars = require("express-handlebars");
 var mongoose = require("mongoose");
+var bodyParser = require('body-parser');
 
 // Require axios and cheerio. This makes the scraping possible
 var axios = require("axios");
@@ -9,6 +10,11 @@ var cheerio = require("cheerio");
 
 // Initialize Express
 var app = express();
+
+// Use Body Parser for json return from html
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 var router = express.Router();
 
